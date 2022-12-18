@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cat"
+
+    android:fadingEdge="horizontal|vertical"
+    android:foregroundTint="#CE52E3"
+    android:orientation="vertical"
+
+    >
+
+    <ImageView
+        android:id="@+id/playiv"
+        android:layout_width="227dp"
+        android:layout_height="113dp"
+        android:background="@drawable/edittextbackground"
+        android:fadingEdge="horizontal"
+        android:foregroundTint="#500C5C"
+        android:padding="10dp"
+        android:scaleType="fitXY"
+        android:translationX="@dimen/cardview_compat_inset_shadow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.652"
+
+        app:srcCompat="@drawable/play" />
+
+    <ImageView
+        android:id="@+id/exitiv"
+        android:layout_width="233dp"
+        android:layout_height="115dp"
+        android:background="@drawable/edittextbackground"
+        android:scaleType="fitXY"
+        android:padding="10dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.905"
+        app:srcCompat="@drawable/exit" />
+
+    <TextView
+        android:id="@+id/hometitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CARD FLIP GAME"
+        android:textColor="#240046"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        android:background="@drawable/edittextbackground"
+        android:backgroundTint="@color/pink"
+        android:padding="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.349" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

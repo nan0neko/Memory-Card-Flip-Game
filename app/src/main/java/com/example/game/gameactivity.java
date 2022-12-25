@@ -17,9 +17,8 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class gameactivity extends AppCompatActivity {
-
     ConstraintLayout l;
-    TextView tv_p1,tv_p2;
+    TextView tv_p1,tv_p2,timer;
     ImageView iv_11,iv_12,iv_13,iv_14,iv_21,iv_22,iv_23,iv_24,iv_31,iv_32,iv_33,iv_34;
     Integer[] cardarray={101,102,103,104,105,106,201,202,203,204,205,206};
     int image101,image102,image103,image104,image105,image106,image201,image202,image203,image204,image205,image206;
@@ -28,6 +27,8 @@ public class gameactivity extends AppCompatActivity {
     int cardNumber=1;
     int turn=1;
     int pl1pts=0,pl2pts=0;
+    int count=0;
+    Thread t;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,7 @@ public class gameactivity extends AppCompatActivity {
         iv_32=findViewById(R.id.iv_32);
         iv_33=findViewById(R.id.iv_33);
         iv_34=findViewById(R.id.iv_34);
+        timer=findViewById(R.id.timee);
         iv_11.setTag("0");
         iv_12.setTag("1");
         iv_13.setTag("2");
@@ -62,6 +64,26 @@ public class gameactivity extends AppCompatActivity {
         frontOfCardsResources();
         Collections.shuffle(Arrays.asList(cardarray));
         tv_p2.setTextColor(Color.GRAY);
+        t=new Thread(){
+            @Override
+            public void run(){
+                while(!isInterrupted()){
+                    try {
+                        Thread.sleep(1000);  //1000ms = 1 sec
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                count++;
+                                timer.setText(String.valueOf(count));
+                            }
+                        });
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        t.start();
         iv_11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -319,8 +341,9 @@ public class gameactivity extends AppCompatActivity {
                 iv_32.getVisibility()==View.INVISIBLE &&
                 iv_33.getVisibility()==View.INVISIBLE &&
                 iv_34.getVisibility()==View.INVISIBLE ){
+            t.interrupt();
             AlertDialog.Builder ab=new AlertDialog.Builder(gameactivity.this);
-            ab.setMessage("GAME OVER\nPLAYER 1: "+pl1pts+"\nPLAYER 2: "+pl2pts).setCancelable(false)
+            ab.setMessage("GAME OVER\n\nPLAYER 1: "+pl1pts+"\nPLAYER 2: "+pl2pts+"\n\nTime taken :"+timer.getText().toString()+" sec").setCancelable(false)
                     .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

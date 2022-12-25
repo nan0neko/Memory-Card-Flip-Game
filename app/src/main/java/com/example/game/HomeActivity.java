@@ -28,10 +28,7 @@ public class HomeActivity extends AppCompatActivity {
         iv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getIntent().getBooleanExtra("EXIT", false))
-                {
-                    finish();
-                }
+                finishAffinity();
             }
         });
     }
